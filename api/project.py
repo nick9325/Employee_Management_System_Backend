@@ -21,3 +21,17 @@ def read_project(project_id: int, db: Session = Depends(get_db)):
 @router.get("/", response_model=list[schemas.Project])
 def read_projects(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
     return crud.get_projects(db, skip=skip, limit=limit)
+
+@router.put("/{project_id}",response_model=schemas.Project)
+def update_project(project_id: int, project: schemas.ProjectCreate, db: Session = Depends(get_db)):
+    db_project = crud.update_project(db, project=project, project_id=project_id)
+    if db_project is None:
+        raise HTTPException(status_code=404, detail="Project not found")
+    return db_project
+
+@router.delete("/{project_id}", response_model=schemas.Project)
+def delete_project(project_id: int, db: Session = Depends(get_db)):
+    db_project = crud.delete_project(db, project_id=project_id)
+    if db_project is None:
+        raise HTTPException(status_code=404, detail="Project not found")
+    return db_project

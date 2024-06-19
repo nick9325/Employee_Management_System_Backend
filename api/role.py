@@ -21,4 +21,18 @@ def read_role(role_id: int, db: Session = Depends(get_db)):
 def read_roles(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
     return crud.get_roles(db, skip=skip, limit=limit)
 
+@router.put("/{role_id}", response_model=schemas.Role)
+def update_role(role_id: int, role: schemas.RoleCreate, db: Session = Depends(get_db)):
+    db_role = crud.update_role(db, role=role, role_id=role_id)
+    if db_role is None:
+        raise HTTPException(status_code=404, detail="Role not found")
+    return db_role
+
+@router.delete("/{role_id}", response_model=schemas.Role)
+def delete_role(role_id: int, db: Session = Depends(get_db)):
+    db_role = crud.delete_role(db,role_id=role_id)
+    if db_role is None:
+        raise HTTPException(status_code=404, detail="Role not found")
+    return db_role
+
 
