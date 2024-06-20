@@ -1,4 +1,6 @@
 from pydantic import BaseModel
+from typing import List
+
 
 class ProjectBase(BaseModel):
     name: str
@@ -12,4 +14,8 @@ class Project(ProjectBase):
 
     class Config:
         orm_mode = True
+
+class ProjectAssign(BaseModel):
+    project_id: int
+    employee_ids: List[int]
 

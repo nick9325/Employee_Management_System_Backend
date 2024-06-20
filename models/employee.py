@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from db.database import Base
+from models.employee_project import association_table
 
 
 class Employee(Base):
@@ -14,5 +15,7 @@ class Employee(Base):
 
     department = relationship("Department")
     role = relationship("Role")
+    projects = relationship("Project", secondary=association_table, back_populates="employees")
+
 
 

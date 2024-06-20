@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from crud import project as crud
+from crud import employee as emp_crud
 from schemas import project as schemas
 from dependency.dependency import get_db
 from core.security import get_current_user
@@ -8,6 +9,14 @@ from schemas.auth import User
 
 router = APIRouter()
 
+
+@router.post("/assign-project/", response_model=schemas.Project)
+def assign_project(project_assign: schemas.ProjectAssign, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    try:
+        project = emp_crud.assign_project_to_employees(db, project_assign.project_id, project_assign.employee_ids)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    return project
 
 @router.post("/", response_model=schemas.Project)
 def create_project(project: schemas.ProjectCreate, db: Session = Depends(get_db),current_user: User = Depends(get_current_user)):

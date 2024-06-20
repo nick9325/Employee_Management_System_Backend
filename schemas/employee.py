@@ -1,5 +1,6 @@
 from pydantic import BaseModel
-from . import department,role
+from . import department,role,project
+from typing import List
 
 class EmployeeBase(BaseModel):
     name: str
@@ -14,6 +15,7 @@ class Employee(EmployeeBase):
     id: int
     department: department.Department
     role: role.Role
+    projects: List[project.Project] = []
 
     class Config:
         orm_mode = True
