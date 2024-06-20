@@ -4,11 +4,11 @@ This is a backend API for managing employees, departments, roles, and projects u
 
 ## Features
 
-- Employee management (CRUD operations)
+- Employee management (CRUD operations, inlcuding read by role, project and department)
 - Department management (CRUD operations)
 - Role management (CRUD operations)
-- Project management (CRUD operations)
-- User authentication and authorization
+- Project management (CRUD operations, including assignment of project to employees )
+- User authentication and authorization (JWT)
 
 ## Endpoints
 
@@ -19,6 +19,9 @@ This is a backend API for managing employees, departments, roles, and projects u
 - **GET** `/employees/{employee_id}` - Read an employee by ID
 - **PUT** `/employees/{employee_id}` - Update an employee by ID
 - **DELETE** `/employees/{employee_id}` - Delete an employee by ID
+- **GET** `/employees/department_name/{department_name}` - Read employees by department name
+- **GET** `/employees/project_name/{project_name}` - Read employees by project name
+- **GET** `/employees/role_name/{role_name}` - Read employees by role name
 
 ### Departments
 
@@ -40,6 +43,7 @@ This is a backend API for managing employees, departments, roles, and projects u
 
 - **GET** `/projects/` - Read all projects
 - **POST** `/projects/` - Create a new project
+- **POST** `/projects/assign-project/` - Assign project to employees
 - **GET** `/projects/{project_id}` - Read a project by ID
 - **PUT** `/projects/{project_id}` - Update a project by ID
 - **DELETE** `/projects/{project_id}` - Delete a project by ID
