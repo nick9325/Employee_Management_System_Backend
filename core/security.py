@@ -4,10 +4,8 @@ from passlib.context import CryptContext
 from schemas.auth import TokenData
 from fastapi import HTTPException, status, Depends
 from fastapi.security import OAuth2PasswordBearer
-from db.database import SessionLocal
 from sqlalchemy.orm import Session
 from utils.auth_utils import get_user_by_email
-from typing import Any, Dict
 from dependency.dependency import get_db
 
 
