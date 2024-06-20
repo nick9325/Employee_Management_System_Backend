@@ -17,12 +17,21 @@ This is a backend API for managing employees, departments, roles, and projects u
 - **GET** `/employees/` - Read all employees
 - **POST** `/employees/` - Create a new employee
 - **GET** `/employees/{employee_id}` - Read an employee by ID
-- **PUT** `/employees/{employee_id}` - Update an employee by ID
-- **DELETE** `/employees/{employee_id}` - Delete an employee by ID
 - **GET** `/employees/department_name/{department_name}` - Read employees by department name
 - **GET** `/employees/project_name/{project_name}` - Read employees by project name
 - **GET** `/employees/role_name/{role_name}` - Read employees by role name
+- **PUT** `/employees/{employee_id}` - Update an employee by ID
+- **DELETE** `/employees/{employee_id}` - Delete an employee by ID
 
+### Projects
+
+- **GET** `/projects/` - Read all projects
+- **POST** `/projects/` - Create a new project
+- **POST** `/projects/assign-project/` - Assign project to employees
+- **GET** `/projects/{project_id}` - Read a project by ID
+- **PUT** `/projects/{project_id}` - Update a project by ID
+- **DELETE** `/projects/{project_id}` - Delete a project by ID
+  
 ### Departments
 
 - **GET** `/departments/` - Read all departments
@@ -38,15 +47,6 @@ This is a backend API for managing employees, departments, roles, and projects u
 - **GET** `/roles/{role_id}` - Read a role by ID
 - **PUT** `/roles/{role_id}` - Update a role by ID
 - **DELETE** `/roles/{role_id}` - Delete a role by ID
-
-### Projects
-
-- **GET** `/projects/` - Read all projects
-- **POST** `/projects/` - Create a new project
-- **POST** `/projects/assign-project/` - Assign project to employees
-- **GET** `/projects/{project_id}` - Read a project by ID
-- **PUT** `/projects/{project_id}` - Update a project by ID
-- **DELETE** `/projects/{project_id}` - Delete a project by ID
 
 ### Authentication
 
